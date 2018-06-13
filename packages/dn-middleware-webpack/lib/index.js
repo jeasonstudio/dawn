@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const utils = require('ntils');
 const os = require('os');
-const formatWebpackMessages = require('./formatWebpackMessages');
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 
 /**
  * 这是一个标准的中间件工程模板
@@ -99,6 +99,7 @@ module.exports = function (opts) {
 
     //build
     let compiler = webpack(config);
+    this.compiler = compiler;
 
     // register 'webpack.compiler' event.
     // support webpackDevServer (or other) middleware(s)

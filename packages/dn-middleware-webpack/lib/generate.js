@@ -104,7 +104,7 @@ function createBabelOptions(opts) {
   if ((utils.isNull(babel.modules) ||
     babel.modules == 'commonjs' ||
     babel.addExports) && babel.addExports !== false) {
-    babel.plugins.push(require.resolve('babel-plugin-add-module-exports'))
+    babel.plugins.push(require.resolve('babel-plugin-add-module-exports'));
   }
   let babelOptions = {
     babelrc: true,
@@ -243,7 +243,7 @@ async function handlerPlugins(wpConfig, opts) {
           }
         },
         canPrint: false
-      }))
+      }));
     }
   }
 }
@@ -303,7 +303,7 @@ async function getEntries(opts) {
 //处理入口文件
 async function handleEntry(wpConfig, opts) {
   let entries = await getEntries(opts);
-  if (entries.length < 1) throw new Error(`没有发现有效的构建入口文件`);
+  if (entries.length < 1) throw new Error('没有发现有效的构建入口文件');
   let templates = await getTemplates(opts);
   entries.forEach(entry => {
     wpConfig.entry[entry.name] = [...opts.inject, entry.file];
