@@ -20,7 +20,7 @@ module.exports = function (opts) {
       // await this.utils.exec(`${jest} ${files}`);
       await jest.run(argv);
     } catch (error) {
-      this.console.error('Jest test failed, see more: https://facebook.github.io/jest/docs/en/getting-started.htm');
+      this.console.error('Jest test failed, see more: https://facebook.github.io/jest/docs/en/getting-started.html');
       this.console.error(error.message);
     }
 
