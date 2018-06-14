@@ -6,18 +6,28 @@ module.exports = resolve => ({
     '**/?(*.)(spec|test).{js,jsx,mjs}'
   ],
   // where to search for files/tests
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   transform: {
-    '^.+\\.(js|jsx|mjs)$': resolve('lib/babelTransform.js')
+    '^.+\\.(js|jsx|mjs)$': resolve('lib/babelTransform.js'),
+    '^.+\\.(css|less|sass|scss)$': resolve('lib/__mocks__/styleMock.js')
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$',
-    '^.+\\.module\\.css$'
+    '^.+\\.module\\.(css|less|sass|scss)$'
   ],
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
-    '^.+\\.module\\.css$': 'identity-obj-proxy'
+    '^.+\\.module\\.(css|less|sass|scss)$': resolve('lib/__mocks__/styleMock.js'),
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': 
+      'lib/__mocks__/fileMock.js'
+    // '\\.(css|less)$': 'lib/__mocks__/styleMock.js'
+  },
+  globals: {
+    window: true
+  },
+  testEnvironmentOptions: {
+    userAgent: 'jest-dawn'
   },
   moduleFileExtensions: [
     'web.js',
