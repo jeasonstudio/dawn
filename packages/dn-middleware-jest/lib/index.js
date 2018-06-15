@@ -1,5 +1,5 @@
 const jest = require('jest');
-const argv = require('./setup');
+const getArgv = require('./setup');
 
 /**
  * 这是一个使用 jest 做单元测试的 dawn 中间件
@@ -7,7 +7,7 @@ const argv = require('./setup');
  * @return {AsyncFunction} 中间件函数
  */
 module.exports = function (opts) {
-  argv.push(...opts.argv);
+  const argv = getArgv(opts.argv, opts.jestConfig);
 
   //外层函数的用于接收「参数对象」
   //必须返回一个中间件处理函数
