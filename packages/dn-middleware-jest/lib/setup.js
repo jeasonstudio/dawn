@@ -14,7 +14,6 @@ module.exports = function (argv, jestConf) {
     createJestConfig(relativePath => path.resolve(__dirname, '..', relativePath)),
     jestConf
   );
-  console.log(JSON.stringify(JEST_CONF, null, 2));
   
   argv.push(
     '--config',
